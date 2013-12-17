@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.FrameLayout;
 
 public class SnowActivity extends Activity {
 	private static FrameLayout fr;
-	private static int width;
+	public static int width;
+	public static int height;
 	private static Context context;
 	private static Queue<Snow> snowQ;
 
@@ -21,7 +23,7 @@ public class SnowActivity extends Activity {
 	 * 변수모음
 	 */
 	// 최대 눈 개수
-	private static int maxSnowCount = 50;
+	private static int maxSnowCount = 100;
 	//애니메이션 딜레이 시간
 	static int delayTime = 50;
 	//눈이 추가되는 간격
@@ -44,6 +46,7 @@ public class SnowActivity extends Activity {
 
 		DisplayMetrics metrics = this.getResources().getDisplayMetrics();
 		width = metrics.widthPixels;
+		height = metrics.heightPixels;
 
 		SnowActivity.context = getApplicationContext();
 
@@ -106,7 +109,10 @@ public class SnowActivity extends Activity {
 
 	// 반복되며 실행..
 	public static void doRepeatedly() {
-		fr.invalidate();
+		for(int i=0; i<fr.getChildCount(); i++){
+			View v = fr.getChildAt(i);
+			v.invalidate();
+		}
 	}
 
 }

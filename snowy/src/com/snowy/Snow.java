@@ -41,13 +41,12 @@ public class Snow extends View {
 		int diff = (int) (Math.random() * 2);
 		if (r % 3 == 0) {
 			x += diff;
-			y += speed;
 		} else if (r % 3 == 1) {
 			x -= diff;
-			y += speed;
 		} else {
-			y += speed;
 		}
+		
+		y += speed;
 
 	}
 }
